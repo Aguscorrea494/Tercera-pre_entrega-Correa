@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/buscar" method="GET">
+        {{ form.as_p }}
+        <input type="submit" value="Buscar">
+
+    </form>
+</div>
+
+{% for persona in personas %}
+<h3>Persona censada</h3> {{persona.nombre}} {{persona.apellido}}, {{persona.dni}}
+{% endfor %}
+
+{% endblock %}

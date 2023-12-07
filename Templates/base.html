@@ -20,7 +20,14 @@
         <!-- Navigation-->
         {% include 'navigation/navigation.html'%}
         {% block cambio %}
+        valor
         {% endblock %}
+
+        {#Custom#}
+        {% if persona %}
+        La persona se llama {{persona.nombre}}
+        {% endif %}
+
         <!-- Masthead-->
         <header class="masthead">
             <div class="container position-relative">
