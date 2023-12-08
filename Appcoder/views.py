@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from Appcoder.models import Hombre, Mujer, Niño
 from Appcoder.forms import HombreForm, BusquedaPersonaForm
+from django.views.generic import ListView, DetailView
 
 
 def mostrar(request):
@@ -35,7 +36,7 @@ def crear_persona_form(request):
             informacion = censo_formulario.cleaned_data
             persona_agregar = Hombre(nombre=informacion["nombre"], apellido=informacion["apellido"], dni=informacion["dni"])
             persona_agregar.save()
-            return redirect("/app/mostrar")
+            return redirect("/app/mostrar1/")
 
     censo_formulario = HombreForm()
     contexto = {
@@ -53,3 +54,11 @@ def busqueda_nombre(request):
    }
    return render(request, template_name="Appcoder/personas.html", context=contexto)
 
+
+class HombreList(ListView):
+    model = Hombre
+    template_name = "Appcoder/censo1.html"
+
+class HombreDetalle(DetailView):
+    model = Hombre
+    template_name = "Appcoder/hombre_detalle.html"

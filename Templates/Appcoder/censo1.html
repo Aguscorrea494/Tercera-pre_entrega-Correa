@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/buscar" method="GET">
+        <input type="text" name="nombre">
+        <input type="submit" value="Buscar">
+
+    </form>
+</div>
+
+{% for persona in object_list %}
+<h3>Persona censada</h3> {{persona.nombre}} {{persona.apellido}}, {{persona.dni}}
+<p>
+    <a href="{% url 'HombreDetails' persona.id %}">Detalles</a>
+</p>
+{% endfor %}
+
+{% endblock %}
