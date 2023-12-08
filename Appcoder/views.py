@@ -36,7 +36,7 @@ def crear_persona_form(request):
             informacion = censo_formulario.cleaned_data
             persona_agregar = Hombre(nombre=informacion["nombre"], apellido=informacion["apellido"], dni=informacion["dni"])
             persona_agregar.save()
-            return redirect("/app/mostrar1/")
+            return redirect("/app/lista/")
 
     censo_formulario = HombreForm()
     contexto = {

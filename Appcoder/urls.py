@@ -9,6 +9,7 @@ urlpatterns = [
     path('buscar/', busqueda_nombre),
     path('crear/', crear_persona),
     # path('mostrar/', mostrar),
-    path('mostrar1/', HombreList.as_view(), name= "HombreView"),
+    path('lista/', HombreList.as_view(), name= "HombreView"),
     path(r'^/(?P<pk>\d+)$', HombreDetalle.as_view(), name="HombreDetails")
+
 ]

@@ -2,10 +2,10 @@
 
 {% block cambio %}
 
-<p>El nombre de la persona es: <b>{{persona.nombre}}  </b></p>
-<p> Apellido : {{persona.apellido}} </p>>
-<p>
-    <a href="{% url 'HombreView'%}" ></a>
-</p>>
+    <p>El nombre de la persona es: <b>{{persona.nombre}} </b></p>
+<p>Apellido : {{persona.apellido}} </p>
+
+
+    <a href="{% url 'HombreView' %}" >LISTAR</a>
 
 {% endblock %}
