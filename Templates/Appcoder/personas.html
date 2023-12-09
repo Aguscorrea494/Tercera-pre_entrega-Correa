@@ -8,6 +8,10 @@
 
     </form>
 </div>
+<p>
+    <a href="{% url 'HombreCreate'%}">CREAR</a>
+</p>
+
 
 {% for persona in personas %}
 <h3>Persona censada</h3> {{persona.nombre}} {{persona.apellido}}, {{persona.dni}}

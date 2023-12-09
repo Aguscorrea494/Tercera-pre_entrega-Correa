@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from Appcoder.models import Hombre, Mujer, Niño
 from Appcoder.forms import HombreForm, BusquedaPersonaForm
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
 def mostrar(request):
@@ -49,7 +49,7 @@ def busqueda_nombre(request):
    persona = Hombre.objects.filter(nombre__icontains= nombre)
    contexto = {
 
-       "personas": persona,
+       "personas": persona ,
        "form": BusquedaPersonaForm()
    }
    return render(request, template_name="Appcoder/personas.html", context=contexto)
@@ -62,3 +62,21 @@ class HombreList(ListView):
 class HombreDetalle(DetailView):
     model = Hombre
     template_name = "Appcoder/hombre_detalle.html"
+
+class HombreCreacion(CreateView):
+    model = Hombre
+    success_url = "/app/lista/"
+    template_name = ("Appcoder/censo.html")
+    fields = ["nombre","apellido","dni"]
+
+class HombreActualizacion(UpdateView):
+    model = Hombre
+    success_url = "/app/lista/"
+    template_name = ("Appcoder/censo.html")
+    fields = ["nombre","apellido","dni"]
+
+class HombreEliminar(DeleteView):
+    model = Hombre
+    success_url = "/app/lista/"
+    template_name = "Appcoder/eliminar_persona.html"
+

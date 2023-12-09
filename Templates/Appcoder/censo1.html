@@ -8,14 +8,26 @@
 
     </form>
 </div>
-
+<p>
+    <a href="{% url 'HombreCreate' %}">CREAR</a>
+</p>
 {% for persona in object_list %}
 
 <h3>Persona censada</h3> {{persona.nombre}} {{persona.apellido}}, {{persona.dni}}
+  <p class="lead mb-0">
+      </p>
 <p>
-    <a href="{% url 'HombreDetails' persona.id %}">Detalles</a>
+    <a href="{% url 'HombreDetail' persona.id %}">Detalles</a>
 </p>
+<p>
+    <a href="{% url 'HombreUpdate' persona.id %}">Editar</a>
+</p>
+<p>
+    <a href="{% url 'HombreDelate' persona.id %}">Eliminar</a>
+</p>
+
 <hr>
+
 {% endfor %}
 
 {% endblock %}
