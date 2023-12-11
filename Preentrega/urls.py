@@ -5,5 +5,6 @@ from Appcoder.views import  show_html,  crear_persona
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', include('Appcoder.urls'))
+    path('app/', include('Appcoder.urls')),
+    path('accounts/', include('accounts.urls'))
 ]
