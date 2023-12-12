@@ -10,7 +10,7 @@ urlpatterns = [
     path('crear/', crear_persona),
     # path('mostrar/', mostrar),
     path('lista/', HombreList.as_view(), name="HombreView"),
-    path('persona/<int:pk>', HombreDetalle.as_view(), name="HombreDetail"),
+    path('persona/<int:pk>', HombreDetalle.as_view(), name="HombreDetail"), # SE AGREGA ASI EN LA URL PARA QUE TOME EL NUMERO DE ID DE LA PERSONA
     path('crear1/', HombreCreacion.as_view(), name="HombreCreate"),
     path('editar/<int:pk>', HombreActualizacion.as_view(), name="HombreUpdate"),
     path('eliminar/<int:pk>', HombreEliminar.as_view(), name="HombreDelate" )

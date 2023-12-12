@@ -2,12 +2,12 @@
 
 {% block cambio %}
 
-    <p>El nombre de la persona es: <b>{{object.nombre}}</b></p>
+    <p>El nombre de la persona es: <b>{{object.nombre}}</b></p> {# SINTAXIS PARA MOSTRAR EL DETALLE#}
 <p>Apellido : {{object.apellido}} </p>
 <p>Dni: {{object.dni}}</p>
 
 <p>
-    <a href="{% url 'HombreView' %}" >LISTAR</a>
+    <a href="{% url 'HombreView' %}" >LISTAR</a> {# BOTON QUE PUEDE REDIRECT#}
 </p>
 
 {% endblock %}

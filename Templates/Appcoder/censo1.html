@@ -11,13 +11,13 @@
 <p>
     <a href="{% url 'HombreCreate' %}">CREAR</a>
 </p>
-{% for persona in object_list %}
+{% for persona in object_list %} {#For para tomar a todas las persons de la lista#}
 
-<h3>Persona censada</h3> {{persona.nombre}} {{persona.apellido}}, {{persona.dni}}
+<h3>Persona censada</h3> {{persona.nombre}} {{persona.apellido}}, {{persona.dni}} {# Toma los datos que pide el modelo y los muestr#}
   <p class="lead mb-0">
       </p>
 <p>
-    <a href="{% url 'HombreDetail' persona.id %}">Detalles</a>
+    <a href="{% url 'HombreDetail' persona.id %}">Detalles</a> {# BOTON PARA VER LOS DETALLES, REDIRECT A LA URL DE LA VISTA#}
 </p>
 <p>
     <a href="{% url 'HombreUpdate' persona.id %}">Editar</a>

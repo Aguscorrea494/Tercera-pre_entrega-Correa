@@ -17,14 +17,14 @@ def mostrar(request):
 
 
 def crear_persona(request):
-    persona = Hombre(nombre="Celina", apellido="Ramos", dni=43446736)
-    persona.save()
+    persona = Hombre(nombre="Celina", apellido="Ramos", dni=43446736) # SE CREA PERSONA DE FORMA DIRECTA
+    persona.save() # SE GUARDA EN BASE DE DATOS
 
     return redirect("/app/mostrar/")
 
 
 def show_html(request):
-    persona = Hombre.objects.first()
+    persona = Hombre.objects.first() #BUSCA EN BASE DE DATOS Y TRAES EL PRIMERO DE LA LISTA DE PERSONAS
     contexto = {
         "persona": persona
     }
@@ -32,19 +32,19 @@ def show_html(request):
 
 @login_required #decorador captura el llamado de la funcion y valida
 def crear_persona_form(request):
-    if request.method == "POST":
-        censo_formulario = HombreForm(request.POST)
-        if censo_formulario.is_valid():
-            informacion = censo_formulario.cleaned_data
-            persona_agregar = Hombre(nombre=informacion["nombre"], apellido=informacion["apellido"], dni=informacion["dni"])
-            persona_agregar.save()
-            return redirect("/app/lista/")
+    if request.method == "POST":  #5 SE VALIDA SI EL METODO ES POST
+        censo_formulario = HombreForm(request.POST) # SE ACLARA EL TIPO
+        if censo_formulario.is_valid(): # SE VALIDA SI EL FORMULARIO FUNCIONA
+            informacion = censo_formulario.cleaned_data # SE TOMAN SOLO LOS DATOS LIMPIOS
+            persona_agregar = Hombre(nombre=informacion["nombre"], apellido=informacion["apellido"], dni=informacion["dni"]) # SE LE PASAN LOS VALORES HTML AL FORMULARIO
+            persona_agregar.save() #6 SE COMPLETA EL FORMULARIO CON LA DATA TRAIDA DEL FORMULARIO DE HTML
+            return redirect("/app/lista/") #7 SE REDIRIGE A LA PAGINA DE LA LISTA
 
-    censo_formulario = HombreForm()
+    censo_formulario = HombreForm() #1  SE ENVIA EN FORMULARIO EN FORMA GET A JGANGO PARA QUE SE VIZUALICE EN EL HTML
     contexto = {
-        "form": censo_formulario
+        "form": censo_formulario #2 PARA QUE HTML LO PUEDA LEER
     }
-    return render(request, template_name="Appcoder/censo.html", context=contexto)
+    return render(request, template_name="Appcoder/censo.html", context=contexto) # SE LO PASA A HTML
 
 def busqueda_nombre(request):
    nombre = request.GET["nombre"]
@@ -57,11 +57,11 @@ def busqueda_nombre(request):
    return render(request, template_name="Appcoder/personas.html", context=contexto)
 
 
-class HombreList(LoginRequiredMixin, ListView):
+class HombreList(LoginRequiredMixin, ListView): #LOGINREQUIREDMIXIN HACE REFERENCIA A QUE EL USUARIO DEBE ESTAR CON LA SESION INICIADA PARA ACCEDER
     model = Hombre
     template_name = "Appcoder/censo1.html"
 
-class HombreDetalle(LoginRequiredMixin, DetailView):
+class HombreDetalle(LoginRequiredMixin, DetailView): # MUESTRA MAS INFO DE LAS PERSONAS AGREGADAS
     model = Hombre
     template_name = "Appcoder/hombre_detalle.html"
 

@@ -2,12 +2,12 @@
 
 {% block cambio %}
 
-<form action="" method="POST">
+<form action="" method="POST"> {#3 CREAR FORMULARIO EN HTML, GRACIAS AL CONTEXTO DE LA VISTA #}
     {% csrf_token %}
 
     {{ form.as_p }}
 
-    <input type="submit" value="Crear">
+    <input type="submit" value="Crear"> {#4 Boton con la funcion guardar, con el nombre de crear #}
 
 
 </form>

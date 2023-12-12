@@ -1,3 +1,3 @@
 from django.db import models
 
-# Create your models here.
+# NO SE PONEN MODELOS PORQUE SE TRABAJA CON LOS MODELOS CREADOS PROPIOS DE JGANGO COMO USER
