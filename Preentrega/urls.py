@@ -1,4 +1,5 @@
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from Appcoder.views import  show_html,  crear_persona
@@ -8,3 +9,5 @@ urlpatterns = [
     path('app/', include('Appcoder.urls')),
     path('accounts/', include('accounts.urls'))
 ]
+
+urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

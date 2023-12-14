@@ -1,3 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# NO SE PONEN MODELOS PORQUE SE TRABAJA CON LOS MODELOS CREADOS PROPIOS DE JGANGO COMO USER
+class Avatar(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to= "avatares", null= True, blank=True)
